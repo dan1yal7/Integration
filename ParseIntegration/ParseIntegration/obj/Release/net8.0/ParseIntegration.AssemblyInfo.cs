@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ParseIntegration")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2250f505f6e1ad0b524bd16703cf0c9ad2f3cc39")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f582ff45ed77f9367766d83036b5897759bd4b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ParseIntegration")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ParseIntegration")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
