@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ParseIntegration.Models.Employees>
+
+<h2>Employees List</h2>
+
+<!-- Форма для загрузки CSV файла -->
+<form asp-controller="Employee" asp-action="Import" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label for="file">Upload CSV file</label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Import</button>
+</form>
+
+<!-- Отображение сообщений об импорте -->
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">@ViewBag.Message</div>
+}
+
+<!-- Таблица для отображения данных сотрудников -->
+<table id="employeesTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Payroll Number</th>
+            <th>Forenames</th>
+            <th>Surname</th>
+            <th>Date of Birth</th>
+            <th>Telephone</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Address 2</th>
+            <th>Postcode</th>
+            <th>Email</th>
+            <th>Start Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Payroll_Number</td>
+                <td>@employee.Forenames</td>
+                <td>@employee.Surname</td>
+                <td>@employee.Date_of_Birth.ToString("dd/MM/yyyy")</td>
+                <td>@employee.Telephone</td>
+                <td>@employee.Mobile</td>
+                <td>@employee.Address</td>
+                <td>@employee.Address_2</td>
+                <td>@employee.Postcode</td>
+                <td>@employee.Email_Home</td>
+                <td>@employee.Start_Date.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#employeesTable').DataTable({
+            "ordering": true,  // Сортировка
+            "searching": true  // Поиск
+        });
+    });
+</script>

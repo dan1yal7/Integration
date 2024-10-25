@@ -1,7 +1,10 @@
-﻿namespace ParseIntegration.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ParseIntegration.Models
 {
     public class Employees
     {
+        [Key]  
         public string Payroll_Number { get; set; }
         public string Forenames { get; set; }
         public string Surname { get; set; }

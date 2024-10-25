@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\admin\Source\Repos\Integration\ParseIntegration\ParseIntegration
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/admin/Source/Repos/Integration/ParseIntegration/ParseIntegration/Views/Employee/Upload.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVXBsb2FkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/admin/Source/Repos/Integration/ParseIntegration/ParseIntegration/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
