@@ -90,7 +90,50 @@ namespace ParseIntegration.Controllers
                 ViewBag.Message = ex.Message;
                 return default;
             }
-         }
+        }
+        /// <summary>
+        /// UpdateEmployee method, can manipulate the data by changing and  editing 
+        /// </summary>
+        /// <param name="updatedEmployee"></param>
+        /// <returns>Store updated data and return Employee page</returns>
+        [HttpPost]
+        public async Task<IActionResult> UpdateEmployee(Employees updatedEmployee)
+        {
+            if (ModelState.IsValid)
+            {
+                var employee = await _context.Employees.FindAsync(updatedEmployee.Payroll_Number);
+                if (employee != null)
+                {
+                    // Update properties
+                    employee.Forenames = updatedEmployee.Forenames;
+                    employee.Surname = updatedEmployee.Surname;
+                    employee.Date_of_Birth = updatedEmployee.Date_of_Birth;
+                    employee.Telephone = updatedEmployee.Telephone;
+                    employee.Mobile = updatedEmployee.Mobile;
+                    employee.Address = updatedEmployee.Address;
+                    employee.Address_2 = updatedEmployee.Address_2;
+                    employee.Postcode = updatedEmployee.Postcode;
+                    employee.Email_Home = updatedEmployee.Email_Home;
+                    employee.Start_Date = updatedEmployee.Start_Date;
+
+                    _context.Employees.Update(employee);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Message"] = "Employee updated successfully!";
+                }
+                else
+                {
+                    TempData["Message"] = "Employee not found.";
+                }
+            }
+            else
+            {
+                TempData["Message"] = "Invalid data.";
+            }
+
+            return RedirectToAction("Upload");
+        }
+
         #endregion 
     }
 }
