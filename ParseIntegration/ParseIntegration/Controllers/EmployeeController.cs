@@ -4,6 +4,8 @@ using ParseIntegration.Infrastructure;
 using ParseIntegration.Models;
 using System.Globalization;
 using System;
+using CsvHelper.Configuration;
+using System.Text;
 
 namespace ParseIntegration.Controllers
 {
@@ -25,26 +27,46 @@ namespace ParseIntegration.Controllers
         [HttpPost]
         public async Task<IActionResult> Import(IFormFile file)
         {
-            if (file == null || file.Length == 0)
+            return await TryExecute(() => Upload(file));
+        }
+            private async Task<IActionResult> Upload(IFormFile file)
             {
-                ViewBag.Message = "Please select a CSV file.";
-                return View("Upload", _context.Employees.ToList());
-            }
-
-            var employees = new List<Employees>();
-
+                if (file == null || file.Length == 0)
+                {
+                    ViewBag.Message = "Please select a CSV file.";
+                    return View("Upload", _context.Employees.ToList());
+                }
+                var employees = new List<Employees>();
             using (var stream = file.OpenReadStream())
             using (var reader = new StreamReader(stream))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csvReader = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                employees = csv.GetRecords<Employees>().ToList();
+                DetectDelimiter = true, // Automatically detect delimiter
+                Encoding = Encoding.UTF8,
+                HeaderValidated = null, // Disable header validation to avoid errors on header mismatch 
+                MissingFieldFound = null
+            }))
+            {
+                csvReader.Context.RegisterClassMap<EmployeesMap>();
+                employees = csvReader.GetRecords<Employees>().ToList();
             }
-                
-            _context.Employees.AddRange(employees);
-            await _context.SaveChangesAsync();
+                _context.Employees.AddRange(employees);
+                await _context.SaveChangesAsync();
+                ViewBag.Message = $"{employees.Count} employees were successfully imported.";
+                return View("Upload", _context.Employees.OrderBy(e => e.Surname).ToList());
+            }
+         private async Task<IActionResult> TryExecute(Func<Task<IActionResult>> func)
+         {
+            try
+            {
+                return await func();
+            }
 
-            ViewBag.Message = $"{employees.Count} employees were successfully imported.";
-            return View("Upload", _context.Employees.OrderBy(e => e.Surname).ToList());
-        }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return default;
+            }
+         }
     }
 }
