@@ -39,33 +39,46 @@ namespace ParseIntegration.Controllers
         {
             return await TryExecute(() => Upload(file));
         }
-            private async Task<IActionResult> Upload(IFormFile file)
-            {
-                if (file == null || file.Length == 0)
-                {
-                    ViewBag.Message = "Please select a CSV file.";
-                    return View("Upload", _context.Employees.ToList());
-                }
-                var employees = new List<Employees>();
+
+
+        /// <summary>
+        /// Processes the uploaded CSV file, reads employee data, and saves it to the database.
+        /// </summary>
+        /// <param name="file">The uploaded CSV file containing employee data.</param>
+        /// <returns>An IActionResult that displays the "Upload" view with a list of employees, and a message indicating the import status.</returns>
+        private async Task<IActionResult> Upload(IFormFile file)
+        {
+           if (file == null || file.Length == 0)
+           {
+              ViewBag.Message = "Please select a CSV file.";
+              return View("Upload", _context.Employees.ToList());
+           }
+            var employees = new List<Employees>();
             using (var stream = file.OpenReadStream())
             using (var reader = new StreamReader(stream))
             using (var csvReader = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                DetectDelimiter = true, // Automatically detect delimiter
+                DetectDelimiter = true, 
                 Encoding = Encoding.UTF8,
-                HeaderValidated = null, // Disable header validation to avoid errors on header mismatch 
+                HeaderValidated = null,  
                 MissingFieldFound = null
             }))
             {
                 csvReader.Context.RegisterClassMap<EmployeesMap>();
                 employees = csvReader.GetRecords<Employees>().ToList();
             }
-                _context.Employees.AddRange(employees);
-                await _context.SaveChangesAsync();
-                ViewBag.Message = $"{employees.Count} employees were successfully imported.";
-                return View("Upload", _context.Employees.OrderBy(e => e.Surname).ToList());
-            }
-         private async Task<IActionResult> TryExecute(Func<Task<IActionResult>> func)
+            _context.Employees.AddRange(employees);
+             await _context.SaveChangesAsync();
+             ViewBag.Message = $"{employees.Count} employees were successfully imported.";
+             return View("Upload", _context.Employees.OrderBy(e => e.Surname).ToList());
+        }
+
+        /// <summary>
+        /// Executes a specified asynchronous function and catches any exceptions, displaying the error message in the view.
+        /// </summary>
+        /// <param name="func">The function to execute.</param>
+        /// <returns>An IActionResult indicating the result of the function or an error message.</returns>
+        private async Task<IActionResult> TryExecute(Func<Task<IActionResult>> func)
          {
             try
             {
