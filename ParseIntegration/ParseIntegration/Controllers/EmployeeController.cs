@@ -11,19 +11,29 @@ namespace ParseIntegration.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly ApplicationDbContext _context; 
+        #region Fields 
+        private readonly ApplicationDbContext _context;
+        #endregion
 
+        #region Ctor
         public EmployeeController(ApplicationDbContext context)
         {
             _context = context;
         }
+        #endregion
 
+        #region Methods
         public IActionResult Upload()
         {
             var employees = _context.Employees.OrderBy(e => e.Surname).ToList();
             return View("Upload", employees);
         }
 
+        /// <summary>
+        /// Imports employee data from a CSV file.
+        /// </summary>
+        /// <param name="file">The CSV file containing employee data.</param>
+        /// <returns>An IActionResult indicating the outcome of the import operation.</returns>
         [HttpPost]
         public async Task<IActionResult> Import(IFormFile file)
         {
@@ -68,5 +78,6 @@ namespace ParseIntegration.Controllers
                 return default;
             }
          }
+        #endregion 
     }
 }
