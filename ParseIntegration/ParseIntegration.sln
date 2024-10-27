@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseIntegration", "ParseIntegration\ParseIntegration.csproj", "{DCD623EF-B336-4EA6-9458-1A994073D76B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParseIntegration", "ParseIntegration\ParseIntegration.csproj", "{DCD623EF-B336-4EA6-9458-1A994073D76B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseIntegraionUnitTest", "ParseIntegraionUnitTest\ParseIntegraionUnitTest.csproj", "{F22AB124-EF83-456C-94B5-42EBB404DA40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DCD623EF-B336-4EA6-9458-1A994073D76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCD623EF-B336-4EA6-9458-1A994073D76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCD623EF-B336-4EA6-9458-1A994073D76B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F22AB124-EF83-456C-94B5-42EBB404DA40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F22AB124-EF83-456C-94B5-42EBB404DA40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F22AB124-EF83-456C-94B5-42EBB404DA40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F22AB124-EF83-456C-94B5-42EBB404DA40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
