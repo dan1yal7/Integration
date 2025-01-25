@@ -142,3 +142,6 @@ C:\Users\admin\Source\Repos\Integration\ParseIntegration\ParseIntegration\obj\De
 C:\Users\admin\Source\Repos\Integration\ParseIntegration\ParseIntegration\obj\Debug\net8.0\ParseIntegration.pdb
 C:\Users\admin\Source\Repos\Integration\ParseIntegration\ParseIntegration\obj\Debug\net8.0\ParseIntegration.genruntimeconfig.cache
 C:\Users\admin\Source\Repos\Integration\ParseIntegration\ParseIntegration\obj\Debug\net8.0\ref\ParseIntegration.dll
+C:\Users\admin\source\repos\Integration\ParseIntegration\ParseIntegration\bin\Debug\net8.0\ParseIntegration.staticwebassets.endpoints.json
+C:\Users\admin\source\repos\Integration\ParseIntegration\ParseIntegration\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\admin\source\repos\Integration\ParseIntegration\ParseIntegration\obj\Debug\net8.0\staticwebassets\msbuild.ParseIntegration.Microsoft.AspNetCore.StaticWebAssetEndpoints.props

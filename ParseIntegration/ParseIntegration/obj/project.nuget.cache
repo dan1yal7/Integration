@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lI/fQEPp292s/EGJ5rQFtgIWrmPINS0HHn8P0ysVCIedaseeX6lh1bw3/dz+YwqUqvVXUZhW8AYMC16ABy37dQ==",
+  "dgSpecHash": "SzSP/f1XJrA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Source\\Repos\\Integration\\ParseIntegration\\ParseIntegration\\ParseIntegration.csproj",
+  "projectFilePath": "C:\\Users\\admin\\source\\repos\\Integration\\ParseIntegration\\ParseIntegration\\ParseIntegration.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

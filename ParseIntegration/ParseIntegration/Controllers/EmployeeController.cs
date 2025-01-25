@@ -37,10 +37,9 @@ namespace ParseIntegration.Controllers
         [HttpPost]
         public async Task<IActionResult> Import(IFormFile file)
         {
-            if (file == null || file.Length == 0)
+            if (file?.Length == 0)
             {
-                ViewBag.Message = "Please select a CSV file.";
-                return View("Upload", _context.Employees.ToList());
+                return BadRequest("File not provided.");
             }
             var employees = new List<Employees>();
             using (var stream = file.OpenReadStream())
